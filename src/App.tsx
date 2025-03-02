@@ -62,7 +62,7 @@ function App() {
         <div className="flex bg-white/90 backdrop-blur-sm rounded-full border-2 border-blue-600 p-1.5">
           <Link to="/" className="px-6 py-2 text-black font-bold hover:text-blue-600 hover:bg-blue-50 rounded-full transition-all">Page d'accueil</Link>
           <Link to="/qui-sommes-nous" className="px-6 py-2 text-black font-bold hover:text-blue-600 hover:bg-blue-50 rounded-full transition-all">Qui sommes-nous</Link>
-          <a href="#activities" className="px-6 py-2 text-black font-bold hover:text-blue-600 hover:bg-blue-50 rounded-full transition-all">Nos activités</a>
+          <Link to="/nos-activites" className="px-6 py-2 text-black font-bold hover:text-blue-600 hover:bg-blue-50 rounded-full transition-all">Nos activités</Link>
           <a href="#engagement" className="px-6 py-2 text-black font-bold hover:text-blue-600 hover:bg-blue-50 rounded-full transition-all">Nos engagements</a>
           <a href="#careers" className="px-6 py-2 text-black font-bold hover:text-blue-600 hover:bg-blue-50 rounded-full transition-all">Nous rejoindre</a>
           <a href="#contact" className="px-6 py-2 text-black font-bold hover:text-blue-600 hover:bg-blue-50 rounded-full transition-all">Contact</a>
@@ -170,43 +170,46 @@ function App() {
             <div className="h-2 bg-blue-200 flex-1 max-w-xs"></div>
           </div>
           
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-24 max-w-7xl mx-auto">
-            <div className="flex justify-center items-center relative">
-              <div className="absolute inset-0 bg-blue-100 rounded-full blur-xl opacity-30"></div>
-              <div className="hexagon">
-                <div className="content">
-                  <Newspaper className="w-16 h-16 text-blue-600 mb-4" />
-                  <h3 className="text-2xl font-bold text-gray-800 mb-3">Production de contenus</h3>
-                  <p className="text-gray-600 text-lg">
-                    Création et diffusion de contenus de qualité
-                  </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <div className="group relative p-6 bg-white border-2 border-blue-600 rounded-xl hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div className="absolute inset-0 bg-blue-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+              <div className="relative z-10">
+                <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Newspaper className="w-10 h-10 text-blue-600" />
                 </div>
+                <h3 className="text-2xl font-bold text-gray-800 mb-4">Production de contenus</h3>
+                <p className="text-gray-600 text-lg leading-relaxed">
+                  Création et diffusion de contenus de qualité
+                </p>
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
               </div>
             </div>
             
-            <div className="flex justify-center items-center relative">
-              <div className="absolute inset-0 bg-blue-100 rounded-full blur-xl opacity-30"></div>
-              <div className="hexagon">
-                <div className="content">
-                  <Building2 className="w-16 h-16 text-blue-600 mb-4" />
-                  <h3 className="text-2xl font-bold text-gray-800 mb-3">Marques médias patrimoniales</h3>
-                  <p className="text-gray-600 text-lg">
-                    Transformation numérique des médias historiques
-                  </p>
+            <div className="group relative p-6 bg-white border-2 border-blue-600 rounded-xl hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div className="absolute inset-0 bg-blue-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+              <div className="relative z-10">
+                <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Building2 className="w-10 h-10 text-blue-600" />
                 </div>
+                <h3 className="text-2xl font-bold text-gray-800 mb-4">Marques médias patrimoniales</h3>
+                <p className="text-gray-600 text-lg leading-relaxed">
+                  Transformation numérique des médias historiques
+                </p>
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
               </div>
             </div>
             
-            <div className="flex justify-center items-center relative">
-              <div className="absolute inset-0 bg-blue-100 rounded-full blur-xl opacity-30"></div>
-              <div className="hexagon">
-                <div className="content">
-                  <Users className="w-16 h-16 text-blue-600 mb-4" />
-                  <h3 className="text-2xl font-bold text-gray-800 mb-3">Conseil en stratégie</h3>
-                  <p className="text-gray-600 text-lg">
-                    Accompagnement stratégique et expertise média
-                  </p>
+            <div className="group relative p-6 bg-white border-2 border-blue-600 rounded-xl hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+              <div className="absolute inset-0 bg-blue-50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl"></div>
+              <div className="relative z-10">
+                <div className="w-16 h-16 bg-blue-100 rounded-lg flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300">
+                  <Users className="w-10 h-10 text-blue-600" />
                 </div>
+                <h3 className="text-2xl font-bold text-gray-800 mb-4">Conseil en stratégie</h3>
+                <p className="text-gray-600 text-lg leading-relaxed">
+                  Accompagnement stratégique et expertise média
+                </p>
+                <div className="absolute bottom-0 left-0 w-full h-1 bg-blue-600 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></div>
               </div>
             </div>
           </div>

@@ -54,6 +54,15 @@ html, body {
   }
 }
 
+/* Animation pour les bandeaux déroulants */
+.scroll-animation {
+  animation: scroll 30s linear infinite;
+}
+
+.scroll-animation-reverse {
+  animation: scroll 30s linear infinite reverse;
+}
+
 @keyframes blob {
   0% {
     transform: scale(1) translate(0px, 0px);
