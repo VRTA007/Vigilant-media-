@@ -3,23 +3,71 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, width=device-width" />
     <title>Vigilant Médias</title>
+    <style>
+      /* Styles inline pour être appliqués avant le chargement des CSS */
+      html, body {
+        touch-action: none;
+        -webkit-text-size-adjust: none !important;
+        -ms-text-size-adjust: none !important;
+        text-size-adjust: none !important;
+        overflow-x: hidden;
+        width: 100%;
+        height: 100%;
+      }
+    </style>
     <script>
-      // Désactiver le zoom sur les appareils iOS
-      document.addEventListener('touchmove', function(event) {
-        if (event.scale !== 1) { event.preventDefault(); }
-      }, { passive: false });
+      // Détection de Safari
+      const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
       
-      // Empêcher le double-tap de zoomer
-      let lastTouchEnd = 0;
-      document.addEventListener('touchend', function(event) {
-        const now = (new Date()).getTime();
-        if (now - lastTouchEnd <= 300) {
-          event.preventDefault();
+      if (isSafari) {
+        // Ajouter une classe pour les styles spécifiques à Safari
+        document.documentElement.classList.add('safari');
+        
+        // Désactiver tous les événements de zoom
+        document.addEventListener('gesturestart', function(e) {
+          e.preventDefault();
+          return false;
+        }, { passive: false });
+        
+        document.addEventListener('gesturechange', function(e) {
+          e.preventDefault();
+          return false;
+        }, { passive: false });
+        
+        document.addEventListener('gestureend', function(e) {
+          e.preventDefault();
+          return false;
+        }, { passive: false });
+        
+        document.addEventListener('touchmove', function(e) {
+          if (e.scale !== 1) {
+            e.preventDefault();
+          }
+        }, { passive: false });
+        
+        // Empêcher le double-tap
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(e) {
+          const now = (new Date()).getTime();
+          if (now - lastTouchEnd <= 300) {
+            e.preventDefault();
+          }
+          lastTouchEnd = now;
+        }, { passive: false });
+        
+        // Fonction pour maintenir le zoom à 1
+        function preventZoom() {
+          const viewport = document.querySelector('meta[name="viewport"]');
+          viewport.content = 'initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0, width=device-width';
         }
-        lastTouchEnd = now;
-      }, false);
+        
+        // Appliquer au chargement et lors du changement d'orientation
+        window.addEventListener('load', preventZoom);
+        window.addEventListener('resize', preventZoom);
+        window.addEventListener('orientationchange', preventZoom);
+      }
     </script>
   </head>
   <body>

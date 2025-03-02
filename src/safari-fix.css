@@ -1,36 +1,117 @@
-/* Safari-specific fixes */
+/* Safari-specific fixes - Version agressive */
 
-/* Disable pinch zoom */
-body {
-  touch-action: pan-x pan-y;
-  -ms-touch-action: pan-x pan-y;
-}
-
-/* Fix for Safari text size adjustment */
-html {
-  -webkit-text-size-adjust: none;
-}
-
-/* Fix for Safari viewport issues */
-@media screen and (max-device-width: 1024px) {
-  html, body {
-    -webkit-overflow-scrolling: touch;
-  }
-}
-
-/* Fix for Safari font rendering */
-* {
+/* Styles globaux pour Safari */
+.safari {
+  /* Désactiver tous les comportements de zoom */
+  touch-action: none !important;
+  -ms-touch-action: none !important;
+  
+  /* Empêcher les ajustements de texte */
+  -webkit-text-size-adjust: none !important;
+  -moz-text-size-adjust: none !important;
+  -ms-text-size-adjust: none !important;
+  text-size-adjust: none !important;
+  
+  /* Forcer le rendu matériel */
+  -webkit-transform: translateZ(0);
+  -moz-transform: translateZ(0);
+  -ms-transform: translateZ(0);
+  -o-transform: translateZ(0);
+  transform: translateZ(0);
+  
+  /* Améliorer le rendu des polices */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+  /* Empêcher les débordements */
+  overflow-x: hidden;
+  max-width: 100vw;
 }
 
-/* Fix for Safari scaling issues */
-@media not all and (min-resolution:.001dpcm) { 
-  @supports (-webkit-appearance:none) {
-    .safari-fix {
-      transform: translateZ(0);
-      backface-visibility: hidden;
-      perspective: 1000px;
-    }
-  }
+/* Appliquer à tous les éléments dans Safari */
+.safari * {
+  /* Désactiver le zoom sur tous les éléments */
+  touch-action: none !important;
+  
+  /* Forcer le rendu matériel sur tous les éléments */
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+  
+  /* Empêcher les sélections qui peuvent déclencher des zooms */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Correction pour les éléments de formulaire */
+.safari input,
+.safari textarea,
+.safari select {
+  font-size: 16px !important; /* Empêche le zoom automatique sur les champs de formulaire */
+  max-height: none !important;
+}
+
+/* Correction pour les conteneurs principaux */
+.safari #root,
+.safari main,
+.safari section {
+  width: 100% !important;
+  max-width: 100vw !important;
+  overflow-x: hidden !important;
+}
+
+/* Correction pour les images et médias */
+.safari img,
+.safari video,
+.safari svg {
+  max-width: 100% !important;
+  height: auto !important;
+}
+
+/* Correction pour les animations */
+.safari .animate-blob,
+.safari .float,
+.safari .fade-in,
+.safari .expand {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Correction pour les éléments de navigation */
+.safari nav {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  z-index: 1000;
+}
+
+/* Correction pour les éléments hexagonaux */
+.safari .hexagon {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Correction pour les grilles et flexbox */
+.safari .grid,
+.safari [class*="grid-cols-"],
+.safari .flex,
+.safari [class*="flex-"] {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Correction pour les éléments avec position fixe ou absolue */
+.safari [class*="fixed"],
+.safari [class*="absolute"] {
+  transform: translateZ(0);
+  will-change: transform;
+}
+
+/* Correction pour les éléments avec des transitions ou animations */
+.safari [class*="transition-"],
+.safari [class*="animate-"],
+.safari [class*="hover:"] {
+  transform: translateZ(0);
+  will-change: transform;
 } 
