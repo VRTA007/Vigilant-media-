@@ -2,6 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Règles globales pour tous les navigateurs */
+html, body {
+  touch-action: manipulation;
+  overflow-x: hidden;
+  width: 100%;
+  height: 100%;
+}
+
+/* Règles spécifiques pour Safari */
+@supports (-webkit-touch-callout: none) {
+  html, body {
+    -webkit-text-size-adjust: none;
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  * {
+    /* Empêcher les interactions de zoom sur Safari */
+    touch-action: pan-x pan-y;
+  }
+}
+
+/* Règles spécifiques pour iOS */
+@media screen and (max-width: 1024px) and (-webkit-min-device-pixel-ratio: 0) {
+  select, textarea, input[type="text"], input[type="password"],
+  input[type="datetime"], input[type="datetime-local"],
+  input[type="date"], input[type="month"], input[type="time"],
+  input[type="week"], input[type="number"], input[type="email"],
+  input[type="url"], input[type="search"], input[type="tel"],
+  input[type="color"] {
+    font-size: 16px; /* Empêche le zoom automatique sur les champs de formulaire */
+  }
+}
+
 @layer utilities {
   .animation-delay-2000 {
     animation-delay: 2s;

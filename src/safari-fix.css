@@ -1,0 +1,36 @@
+/* Safari-specific fixes */
+
+/* Disable pinch zoom */
+body {
+  touch-action: pan-x pan-y;
+  -ms-touch-action: pan-x pan-y;
+}
+
+/* Fix for Safari text size adjustment */
+html {
+  -webkit-text-size-adjust: none;
+}
+
+/* Fix for Safari viewport issues */
+@media screen and (max-device-width: 1024px) {
+  html, body {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* Fix for Safari font rendering */
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Fix for Safari scaling issues */
+@media not all and (min-resolution:.001dpcm) { 
+  @supports (-webkit-appearance:none) {
+    .safari-fix {
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      perspective: 1000px;
+    }
+  }
+} 
